@@ -1,5 +1,4 @@
-/*code correct per discussion forum Trouble with Task 8 and 9
-require() is a method built in Node js and is used to incorporate external modules that are included in different files. 
+/*require() is a method built in Node js and is used to incorporate external modules that are included in different files. 
 The require() statment essentially reads and executes a Java Script file before returning the export*/
 const express = require('express');
 const jwt = require('jsonwebtoken');
@@ -40,11 +39,11 @@ app.use("/customer/auth/*", function auth(req,res,next){
             return res.status(403).json({message: "User not logged in"})
         }
 });
-//Previous block of code was added per updating the code for the authentication mechanism step
+
 
 const PORT =5000;
 
 app.use("/customer", customer_routes);
 app.use("/", genl_routes);
 
-app.listen(PORT,()=>console.log("Server is an absulutely awesome purple butthole"));
+app.listen(PORT,()=>console.log("Server is an amazingly working port to the future"));
