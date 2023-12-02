@@ -45,20 +45,20 @@ public_users.get('/isbn/:isbn',function (req, res) {
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {
   //Write your code here
-  based_author = req.params.author;
-  booksarray = books;
-  new_array = {};
+  findAuthor = req.params.author;
+  booksList = books;
+  newList = {};
   
-  for(var key in booksarray) {
-      if(booksarray.hasOwnProperty(key)) {
-          var value = booksarray[key];
-          if  (value["author"] == based_author) {
-              new_array[key] = value;
+  for(var key in booksList) {
+      if(booksList.hasOwnProperty(key)) {
+          var value = booksList[key];
+          if  (value["author"] == findAuthor) {
+              newList[key] = value;
           }
 
       }
   }
-  res.send(new_array);
+  res.send(newList);
       
   });
   
@@ -66,37 +66,37 @@ public_users.get('/author/:author',function (req, res) {
 // Get all books based on title
 public_users.get('/title/:title',function (req, res) {
   //Write your code here
-  based_title = req.params.title;
-  booksarray = books;
-  new_array = {};
+  findTitle = req.params.title;
+  booksList = books;
+  newList = {};
   
-  for(var key in booksarray) {
-      if(booksarray.hasOwnProperty(key)) {
-          var value = booksarray[key];
-          if  (value["title"] == based_title) {
-              new_array[key] = value;
+  for(var key in booksList) {
+      if(booksList.hasOwnProperty(key)) {
+          var value = booksList[key];
+          if  (value["title"] == findTitle) {
+              newList[key] = value;
           }
 
       }
   }
-  res.send(new_array);
+  res.send(newList);
 });
 
 //  Get book review
 public_users.get('/review/:isbn',function (req, res) {
   //Write your code here
-  based_isbn = req.params.isbn;
-  booksarray = books;
-  new_array = {};
+  findIsbn = req.params.isbn;
+  booksList = books;
+  newList = {};
   another_array = {};
   
-  for(var key in booksarray) {
-      if(booksarray.hasOwnProperty(key)) {
-          var value = booksarray[key];
-          if  (key == based_isbn) {
-              new_array[key] = value;
+  for(var key in booksList) {
+      if(booksList.hasOwnProperty(key)) {
+          var value = booksList[key];
+          if  (key == findIsbn) {
+              newList[key] = value;
           }
-          another_array[key] = new_array["review"];
+          another_array[key] = newList["review"];
 
       }
   }
