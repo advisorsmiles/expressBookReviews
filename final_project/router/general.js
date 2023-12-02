@@ -31,9 +31,21 @@ public_users.get('/',function (req, res) {
 // Get book details based on ISBN
 public_users.get('/isbn/:isbn',function (req, res) {
   const isbn = req.params.isbn;
-  res.send(books[isbn]);
+  booksList = books;
+  newList = {};
   
- });
+  for(var key in booksList) {
+      if(booksList.hasOwnProperty(key)) {
+          var value = booksList[key];
+          if  (value["isbn"] == isbn) {
+              newList[key] = value;
+          }
+
+      }
+  }
+  res.send(newList);
+
+  });
   
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {
@@ -95,4 +107,5 @@ public_users.get('/review/:isbn',function (req, res) {
 });
 
 module.exports.general = public_users;
+
 
