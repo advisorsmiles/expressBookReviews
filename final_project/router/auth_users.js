@@ -8,10 +8,10 @@ let users = [];
 const isValid = (username)=>{ //returns boolean
     //write code to check is the username is valid
 
-    let userswithsamename = users.filter((user)=>{
+    let validName = users.filter((user)=>{
         return user.username === username
     });
-    if(userswithsamename.length > 0){
+    if(validName.length > 0){
         return true;
     } else {
         return false;
@@ -21,10 +21,10 @@ const isValid = (username)=>{ //returns boolean
 const authenticatedUser = (username,password)=>{ //returns boolean
     //write code to check if username and password match the one we have in records.
 
-    let validusers = users.filter((user)=>{
+    let authUser = users.filter((user)=>{
         return (user.username === username && user.password === password)
     });
-    if(validusers.length > 0){
+    if(authUser.length > 0){
         return true;
     } else {
         return false;
@@ -33,11 +33,10 @@ const authenticatedUser = (username,password)=>{ //returns boolean
 
 //only registered users can login
 regd_users.post("/login", (req,res) => {
-    //Write your code here
 const username = req.body.username;
   const password = req.body.password;
   if (!username || !password) {
-      return res.status(404).json({message: "Error logging in"});
+      return res.status(404).json({message: "Cannot log in"});
   }
   if (authenticatedUser(username,password)) {
     let accessToken = jwt.sign({
@@ -48,9 +47,9 @@ const username = req.body.username;
   }
   console.log("Access Token: " + accessToken + " Username: " + username);
   console.log("req.session.authorization: " + req.session.authorization);
-  return res.status(200).send("User successfully logged in");
+  return res.status(200).send("Success");
   } else {
-    return res.status(208).json({message: "Invalid Login. Check username and password"});
+    return res.status(208).json({message: "Invalid username and password"});
   }
     
 });
