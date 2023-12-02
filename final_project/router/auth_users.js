@@ -65,11 +65,11 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
         console.log("New Review: "+newReview)
         for(var key in books) {
             if(books.hasOwnProperty(key)) {
-                var value = books[key];
-                console.log("Value: "+value)
+                var upReview = books[key];
+                console.log("upReview: "+upReview)
                 if  (key == findIsbn) {
-                    value["reviews"] = newReview;
-                    console.log("Updated value reviews: " + value["reviews"]);
+                    upReview["reviews"] = newReview;
+                    console.log("upReview: " + upReview["reviews"]);
                 }
 
             }
@@ -88,16 +88,16 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
     console.log(findIsbn);
     let listedBook = books[findIsbn]
     console.log(listedBook);
-    if (listedBook) { //Check if the book exists
+    if (listedBook) { 
         let newReview = {};
         console.log("New Review: "+newReview)
         for(var key in books) {
             if(books.hasOwnProperty(key)) {
-                var value = books[key];
-                console.log("Value: "+value)
+                var upReview = books[key];
+                console.log("upReview: "+upReview)
                 if  (key == findIsbn) {
-                    value["reviews"] = newReview;
-                    console.log("Updated value reviews: " + value["reviews"]);
+                    upReview["reviews"] = newReview;
+                    console.log("upReview: " + upReview["reviews"]);
                 }
 
             }
