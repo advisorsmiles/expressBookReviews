@@ -56,28 +56,27 @@ const username = req.body.username;
 
 // Add a book review
 regd_users.put("/auth/review/:isbn", (req, res) => {
-    //Write your code here
     console.log("Hello this is the PUT REQUEST function")
-    const based_isbn = req.params.isbn;
-    console.log(based_isbn);
-    let filtered_book = books[based_isbn]
-    console.log(filtered_book);
-    if (filtered_book) { //Check if the book exists
-        let new_review = req.query.reviews;
-        console.log("New Review: "+new_review)
+    const findIsbn = req.params.isbn;
+    console.log(findIsbn);
+    let listedBook = books[findIsbn]
+    console.log(listedBook);
+    if (listedBook) { 
+        let newReview = req.query.reviews;
+        console.log("New Review: "+newReview)
         for(var key in books) {
             if(books.hasOwnProperty(key)) {
                 var value = books[key];
                 console.log("Value: "+value)
-                if  (key == based_isbn) {
-                    value["reviews"] = new_review;
+                if  (key == findIsbn) {
+                    value["reviews"] = newReview;
                     console.log("Updated value reviews: " + value["reviews"]);
                 }
 
             }
         }
 
-        res.send(`The review for the book with isbn ${based_isbn} has been added/updated. `)
+        res.send(`The review for the book with isbn ${findIsbn} has been added/updated. `)
     }
 
 });
@@ -87,26 +86,26 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
     console.log("Hello this is the DELETE REQUEST function")
     uName = req.body.username;
     console.log("Username: " + uName);
-    const based_isbn = req.params.isbn;
-    console.log(based_isbn);
-    let filtered_book = books[based_isbn]
-    console.log(filtered_book);
-    if (filtered_book) { //Check if the book exists
-        let new_review = {};
-        console.log("New Review: "+new_review)
+    const findIsbn = req.params.isbn;
+    console.log(findIsbn);
+    let filtered_book = books[findIsbn]
+    console.log(listedBook);
+    if (listedBook) { //Check if the book exists
+        let newReview = {};
+        console.log("New Review: "+newReview)
         for(var key in books) {
             if(books.hasOwnProperty(key)) {
                 var value = books[key];
                 console.log("Value: "+value)
-                if  (key == based_isbn) {
-                    value["reviews"] = new_review;
+                if  (key == findIsbn) {
+                    value["reviews"] = newReview;
                     console.log("Updated value reviews: " + value["reviews"]);
                 }
 
             }
         }
 
-        res.send(`The review for the book by ${uName} with isbn ${based_isbn} has been deleted. `)
+        res.send(`The review for the book by ${uName} with isbn ${findIsbn} has been deleted. `)
     }
 });
 
