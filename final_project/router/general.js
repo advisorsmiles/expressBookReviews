@@ -88,7 +88,7 @@ public_users.get('/review/:isbn',function (req, res) {
   findIsbn = req.params.isbn;
   booksList = books;
   newList = {};
-  another_array = {};
+  anotherList = {};
   
   for(var key in booksList) {
       if(booksList.hasOwnProperty(key)) {
@@ -96,11 +96,11 @@ public_users.get('/review/:isbn',function (req, res) {
           if  (key == findIsbn) {
               newList[key] = value;
           }
-          another_array[key] = newList["review"];
+          anotherList[key] = newList["review"];
 
       }
   }
-  res.send(another_array);
+  res.send(anotherList);
 
 });
 
