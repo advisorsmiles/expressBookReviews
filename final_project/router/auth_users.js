@@ -56,7 +56,6 @@ const username = req.body.username;
 
 // Add a book review
 regd_users.put("/auth/review/:isbn", (req, res) => {
-    console.log("Hello this is the PUT REQUEST function")
     const findIsbn = req.params.isbn;
     console.log(findIsbn);
     let listedBook = books[findIsbn]
@@ -83,12 +82,11 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
 
 regd_users.delete("/auth/review/:isbn", (req, res) => {
 
-    console.log("Hello this is the DELETE REQUEST function")
-    uName = req.body.username;
-    console.log("Username: " + uName);
+    name = req.body.username;
+    console.log("Username: " + name);
     const findIsbn = req.params.isbn;
     console.log(findIsbn);
-    let filtered_book = books[findIsbn]
+    let listedBook = books[findIsbn]
     console.log(listedBook);
     if (listedBook) { //Check if the book exists
         let newReview = {};
@@ -105,7 +103,7 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
             }
         }
 
-        res.send(`The review for the book by ${uName} with isbn ${findIsbn} has been deleted. `)
+        res.send(`The review for the book by ${name} with isbn ${findIsbn} has been deleted. `)
     }
 });
 
