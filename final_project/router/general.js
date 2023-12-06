@@ -87,22 +87,20 @@ public_users.get('/title/:title',function (req, res) {
 
 //  Get book review
 public_users.get('/review/:isbn',function (req, res) {
-  findIsbn = req.params.isbn;
-  booksList = books;
-  newList = {};
-  anotherList = {};
+    const isbn = req.params.isbn;
+    booksList = books;
+    newList = {};
+    
+    for(var key in booksList) {
+        if(booksList.hasOwnProperty(key)) {
+            var value = booksList[key];
+            if  (value["isbn"] == isbn) {
+                newList[key] = value["reviews"];
+            }
   
-  for(var key in booksList) {
-      if(booksList.hasOwnProperty(key)) {
-          var value = booksList[key];
-          if  (key == findIsbn) {
-              newList[key] = value;
-          }
-          anotherList[key] = newList["review"];
-
-      }
-  }
-  res.send(anotherList);
+        }
+    }
+    res.send(newList);
 
 });
 
