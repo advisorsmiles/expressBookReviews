@@ -89,7 +89,7 @@ public_users.get('/books/author/:author',function (req, res) {
         });
     
         booksByAuthor.then(function(){
-                console.log("Promise resolved");
+                console.log("Promise task 12");
        }).catch(function () { 
                     console.log("author not valid");
       });
