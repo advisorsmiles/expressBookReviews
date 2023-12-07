@@ -30,7 +30,24 @@ public_users.get('/',function (req, res) {
 
 // Get book details based on ISBN
 public_users.get('/isbn/:isbn',function (req, res) {
-  const isbn = req.params.isbn;
+    const getBooksIsbn = new Promise((resolve, reject) => {
+        const isbn = req.params.isbn;
+        // console.log(isbn);
+            if (req.params.isbn <= 10) {
+            resolve(res.send(books[isbn]));
+        }
+            else {
+                reject(res.send('ISBN not valid'));
+            }
+        });
+        getBooksIsbn
+            then(function(){
+                console.log("Promise");
+       }).
+            catch(function () { 
+                    console.log('ISBN not valid');
+      });
+    
   booksList = books;
   newList = {};
   
